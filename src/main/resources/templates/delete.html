@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		
+		<!-- Bootstrap CSS -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+			crossorigin="anonymous"
+		>
+		
+		<title>Borrar estudiante</title>
+	</head>
+	<body>
+	<form class="form-horizontal" 
+			action="#" 
+			th:action="@{/deleteSubmit}" 
+			th:object="${studentDel}" 
+			method="post">
+		<fieldset>
+
+			<legend>Estudiante seleccionado</legend>
+
+			<!-- * pilla los campos del objeto definido en form -->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="name">Nombre:</label>
+				<div class="col-md-4">
+					<input id="name" name="name" type="text" class="form-control input-md" readonly
+					th:field= "*{name}" th:value="*{studentDel.name}">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="surname">Apellido: </label>
+				<div class="col-md-4">
+					<input id="surname" name="surname" type="text" class="form-control input-md" readonly
+					th:field= "surname" th:value="*{studentDel.surname}">
+
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="age">Edad: </label>
+				<div class="col-md-4">
+					<input id="age" name="age" type="number" class="form-control input-md" readonly
+					th:field= "*{age}" th:value="*{studentDel.age}">
+
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="send"></label>
+				<div class="col-md-4">
+					<button id="send" name="send" class="btn btn-primary">Borrar</button>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+		
+	</body>
+</html>
