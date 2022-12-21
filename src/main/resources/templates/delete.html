@@ -28,7 +28,7 @@
 				<label class="col-md-4 control-label" for="name">Nombre:</label>
 				<div class="col-md-4">
 					<input id="name" name="name" type="text" class="form-control input-md" readonly
-					th:field= "*{name}" th:value="*{studentDel.name}">
+					th:field= "*{name}" th:value="*{name}">
 				</div>
 			</div>
 
@@ -36,7 +36,7 @@
 				<label class="col-md-4 control-label" for="surname">Apellido: </label>
 				<div class="col-md-4">
 					<input id="surname" name="surname" type="text" class="form-control input-md" readonly
-					th:field= "surname" th:value="*{studentDel.surname}">
+					th:field= "*{surname}" th:value="*{surname}">
 
 				</div>
 			</div>
@@ -45,11 +45,17 @@
 				<label class="col-md-4 control-label" for="age">Edad: </label>
 				<div class="col-md-4">
 					<input id="age" name="age" type="number" class="form-control input-md" readonly
-					th:field= "*{age}" th:value="*{studentDel.age}">
+					th:field= "*{age}" th:value="*{age}">
 
 				</div>
 			</div>
+			<div class="form-group">
+				<div class="col-md-4">
+					<input id="age" name="age" type="number" class="form-control input-md" readonly
+					th:field= "*{id}" th:value="*{id}">
 
+				</div>
+			</div>
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="send"></label>
 				<div class="col-md-4">

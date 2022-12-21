@@ -16,9 +16,10 @@
 	<div class="container">
 		<div class="starter-template">
 								
-			<a href="./add.html">
-				<button id="send" name="send" class="btn btn-primary">Añadir</button>
-			</a>
+			<form th:action="@{/add}" method="GET">			
+				 <button id="send" name="send" class="btn btn-primary">Añadir</button>
+			</form>
+			
 			<h1>Listado de Estudiantes</h1>
 			<table class="table">
 				<thead>

@@ -19,13 +19,15 @@ public class PruebaController {
 	@Autowired
 	private StudentService repositorio;
 	
-	
+	//Muestra la lista de estudiantes
 	@GetMapping({"/","/estudiantes"})
 	public String Students(Model model) {
 		model.addAttribute("estudiantes", repositorio.getStudents());
 		return "index";
 	}
 	
+	//Coje el id del estudiante y recupera el objeto estudiante Y
+	//Nos lleva a una pagina de confirmación para borrar al estudiante
 	@GetMapping("/delete")
 	public String deleteStudent(Model model,
 			@RequestParam(name="id") Long id)
@@ -33,29 +35,31 @@ public class PruebaController {
 		Student student = repositorio.getStudent(id);
 		model.addAttribute("studentDel", student);
 		//repositorio.delete(student);
-		return "/delete";
+		return "delete";
 	}
 	
+	//Nos borra el estudiante y nos lleva a la lista de estudiantes
 	@PostMapping("/deleteSubmit")
 	public String deleteSubmit(@ModelAttribute("studentDel") Student student) {
 		repositorio.delete(student);
 		return "redirect:/estudiantes";
 	}
 	
+	//nos lleva a 
 	@GetMapping("/add")	 
-	public String addStudent(@Validated Model model, BindingResult bindingResult,
-			@RequestParam(name="name", required=false, defaultValue="") String name,
-			@RequestParam(name="surname", required=false, defaultValue="") String surname,
-			@RequestParam(name="age", required=false, defaultValue="") int age
-			) {
-		if(bindingResult.hasErrors()) {
+	public String addStudent(Model model) {
+			Student student = new Student();
+			model.addAttribute("studentAdd",student);
 			return "add";
-		}else {			
-			Student student = new Student(name,surname,age);
-			repositorio.add(student);
-			return "redirect:/estudiantes";
-		}
 	}
+	
+	@PostMapping("/addSubmit")
+	public String addSubmit(@ModelAttribute("studentAdd")Student student) {
+		repositorio.add(student);
+		return "redirect:/estudiantes";
+	}
+	
+	
 	@GetMapping("/edit")
 	public String editStudent (Model model,@RequestParam(name="id") Long id) {
 		Student estudiante = repositorio.getStudent(id);
